@@ -1,24 +1,64 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
-
-
+function maxOfTwoNumbers(x,y) {
+        if (x===y){
+      return x,y;
+    } 
+    return x>y ? x : y
+}
+    
+  
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
-
-function findLongestWord() {}
-
-
-
-// Iteration #3: Calculate the sum
+function findLongestWord(array) {
+  let currentLonger = null;
+  if (array.length){
+    currentLonger = array[0];
+    for (const word of array){
+      if (word.length>currentLonger.length){
+        currentLonger=word;
+      }
+    }
+  }  
+  return currentLonger;
+}
+// Iteration #3.1: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+
+function sumNumbers(array) {
+  let sum = 0;
+  for (const num of array){
+    sum+=num;
+  }
+  return sum; 
+}
 
 
+// Iteration #3.2 Bonus:
+function sum(array) {
+  let totalSum = 0;
+  for (const element of array){
+    if (typeof element === "array" || typeof element === "object"){
+      throw Error("Unsupported data type sir or ma'am")
+    }
+    if (element===true){
+      totalSum++;
+    }
+    if (element===false){
+      continue;
+    }
+    if (typeof element === "string"){
+      totalSum+= element.length;
+    }
+    if (typeof element === "number"){
+      totalSum+= element;
+    }
+    
+  }
+  return totalSum; 
+}
 
-// Iteration #3.1 Bonus:
-function sum() {}
 
 
 
@@ -26,16 +66,36 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(array) {
+  let average=null;
+  if (array.length){
+  average = sumNumbers(array)/array.length;
+  }
+  return average;
+}
 
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(array) { 
+  let average=null;
+  if (array.length){
+    average = sum(array)/array.length;
+  }
+  return average; 
+}
 
-// Bonus - Iteration #4.1
-function avg() {}
+
+// Bonus - Iteration #4.3
+function avg(array) {
+  let average=null;
+  if (array.length){
+    average = sum(array)/array.length;
+  }
+  return average; 
+}
+
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -52,14 +112,32 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(array) {
+  if (!array.length) { return null;}
+  let filteredArray=[];
+  for (i=0;i<array.length;i++){
+    if(i===array.indexOf(array[i])){
+      filteredArray.push(array[i]);
+    }
+  }
+  return filteredArray;
+}
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(array, wordToSearch) {
+  if (!array.length) { return null;}
+  for (const word of array){
+    if (word.toUpperCase()===wordToSearch.toUpperCase()){
+      console.log("test");
+      return true;
+    }
+  }
+  return false;
+}
+
 
 
 
@@ -75,10 +153,23 @@ const wordsCount = [
   'matter',
   'truth',
   'disobedience',
+  'matter',
   'matter'
 ];
 
-function howManyTimes() {}
+
+function howManyTimes(array,word) {
+  if (!array.length) {
+    return 0 ;
+  }
+  let duplicateCounter=0;
+  for(const element of array){
+    if (element===word){
+      duplicateCounter++;
+    }
+  }
+  return duplicateCounter;
+}
 
 
 
@@ -106,8 +197,77 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+let test =[
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+];
 
+function greatestProduct(array) {
+let bestProductColumn = 1;
+let bestProductRow = 1;
+ for (let j=0; j<array.length-3; j++) 
+  for (let i=0; i< array[0].length-3;i++){
+    
+    let productOfFourInCol = array[i][j]*array[i+1][j]*array[i+2][j]*array[i+3][j];
+    let productOfFourInRow = array[j][i]*array[j+1][i]*array[j+2][i]*array[j+3][i];
+        
+    if (productOfFourInCol > bestProductColumn){
+        bestProductColumn=productOfFourInCol;
+    }
+
+    if (productOfFourInRow > bestProductRow){
+      bestProductRow=productOfFourInRow;
+    }
+  }
+  return bestProductColumn>bestProductRow ? bestProductColumn : bestProductRow ;
+}
+
+console.log(greatestProduct(matrix))
+
+
+
+function greatestProductOfDiagonals(array) {
+  let bestProductDiagRight = 1;
+  let bestProductDiagLeft = 1;
+ 
+   for (let j=0; j<array.length; j++) 
+    for (let i=0; i< array[j].length;i++){
+      
+      let productOfFourDiagRight = (matrix[i]?.[j] || 1)*(matrix[i+1]?.[j+1] || 1)*(matrix[i+2]?.[j+2] || 1)*(matrix[i+3]?.[j+3] || 1) ;
+      let productOfFourDiagLeft = (matrix[j]?.[i] || 1)*(matrix[j+1]?.[i-1] || 1)*(matrix[j+2]?.[i-2] || 1)*(matrix[j+3]?.[i-3] || 1) ;
+
+
+      if (productOfFourDiagRight > bestProductDiagRight){
+        bestProductDiagRight=productOfFourDiagRight;
+      }
+
+      if (productOfFourDiagLeft > bestProductDiagRight){
+        bestProductDiagRight=productOfFourDiagLeft;
+      }
+  
+    }
+    //return bestProductColumn>bestProductRow ? bestProductColumn : bestProductRow ;
+    return bestProductDiagRight;
+  }
+  console.log(greatestProductOfDiagonals(matrix))
 
 
 
@@ -128,3 +288,44 @@ if (typeof module !== 'undefined') {
     greatestProduct
   };
 }
+
+
+
+
+// 0,0  0,1  0,2  0,3
+// 1,0  1,1  1,2  1,3
+// 2,0  2,1  2,2  2,3
+// 3,0  3,1  3,2  3,3
+                                                                
+//3,0 OK                        0,0             OK       
+//2,0 - 3,1 OK                  0,1  1,0      OK         
+//1,0 - 2,1 - 3,2 OK            0,2  1,1  2,0     OK
+//0,0 1,1 2,2 3,3  OK           0,3  1,2  2,1  3,0     ok 
+//0,1 1,2 2,3 OK                1,3  2,2  3,1      ok   
+//0,2 1,3 OK                    2,3  3,2        OK      
+//0,3                           3,3                    
+
+//matrix[i][j]*matrix[i+1][j+1]*matrix[i+2][j+2]*matrix[i+3][j+3] 
+
+// matrix[i][j]*matrix[i+1][j-1]*matrix[i+2][j-2]*matrix[i+3][j-3] 
+
+// i=0 J=0  >> 0,0 * 1,1 * 2,2 * 3,3
+// i=1 j=0  >> 1,0 * 2,1 * 3,2
+// i=2 j= 0 >> 2,0 * 3,1
+// i=3 j=0 >> 3,0 
+
+// i=0 j=1 >> 0,1 * 1,2 * 2,3 
+// i=1 j=1 >> 1,1 * 2,2* 3,3
+// i=2 j=1 >> 2,1 *3,2 ?????
+// i= 3 j=1 >> 3,1 ?????
+
+// i=0 j=2 >> 0,2 * 1,3 
+// i=1 j=2 >> 1,2 *2,3 ?????
+
+// i=0 j=3 >> 0,3 
+
+// for (let j=0; j<matrix.length, j++)  0  // 1  //  2  // 3
+//   for (let i=0; i<matrix[j].length; i++) 0 1 2 3 // 0 1 // 0 // 0
+
+
+           
